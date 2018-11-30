@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MeuBancoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MeuBancoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Produtos" EntityType="MeuBancoModel.Produto" />
+    <EntitySet Name="Categorias" EntityType="MeuBancoModel.Categoria" />
+    <AssociationSet Name="CategoriaProduto" Association="MeuBancoModel.CategoriaProduto">
+      <End Role="Categoria" EntitySet="Categorias" />
+      <End Role="Produto" EntitySet="Produtos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Marca" Type="String" Nullable="false" />
+    <Property Name="Modelo" Type="String" Nullable="false" />
+    <Property Name="Motor" Type="String" Nullable="false" />
+    <Property Name="Cor" Type="String" Nullable="false" />
+    <Property Name="Valor" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Categoria" Relationship="MeuBancoModel.CategoriaProduto" FromRole="Produto" ToRole="Categoria" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" />
+    <NavigationProperty Name="Produtos" Relationship="MeuBancoModel.CategoriaProduto" FromRole="Categoria" ToRole="Produto" />
+  </EntityType>
+  <Association Name="CategoriaProduto">
+    <End Type="MeuBancoModel.Categoria" Role="Categoria" Multiplicity="1" />
+    <End Type="MeuBancoModel.Produto" Role="Produto" Multiplicity="*" />
+  </Association>
+</Schema>

@@ -1,0 +1,42 @@
+<div class="container-fluid" id="tudo">
+
+	<div class="d-flex justify-content-center" id="textoTitulo">
+		<h1>{{titulo}}</h1>
+	</div>
+
+</div>
+
+<div class="container">
+	<div class="row" >
+
+		<div class="col mr-5" id="inserirCadastro">
+			<div class="input mb-3 container" id="cadastro">
+				<input type="text" class="form-control" placeholder="Nome da Categoria" [(ngModel)] = "categoria.Nome" maxlength="40"><br>
+					<button class="btn btn-outline-secondary" type="button" (click)="cadastrar()">Cadastrar</button>
+			</div><br>
+
+			<a routerLink="">Voltar</a><br>
+			<a routerLink="/produto">Cadastrar Produtos</a>
+		</div>
+
+		<div class="col ml-5 " id="tabela">
+			<table class="table">
+				<tr *ngFor="let c of categorias; let i = index">
+					<th scope="row">
+						<div class="row">
+							<div class="col-10">
+								<span>• <u>Nome</u>: {{c.Nome}}</span>
+							</div>
+							<div class="col-2">	
+								<img src="..\assets\editIcon.png" (click)="editar(i)" style="width: 20px; height: 20px; margin-right: 10px;">
+								<img src="..\assets\deleteIcon.png" (click)="remover(i)" style="width: 20px; height: 20px;">
+							</div>
+						</div>
+					</th>
+				</tr>
+			</table>			
+		</div>
+
+	</div>
+</div>
+

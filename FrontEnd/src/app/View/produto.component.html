@@ -1,0 +1,53 @@
+<div class="container-fluid" id="tudo">
+
+	<div class="d-flex justify-content-center" id="textoTitulo">
+		<h1>{{titulo}}</h1>
+	</div>
+
+</div>
+
+<div class="container">
+
+	<div class="row" >
+		<div class="col mr-5" id="inserirCadastro">
+			<div class="input mb-3 container" id="cadastro">
+				<input type="text" class="form-control" placeholder="Marca" [(ngModel)] = "produto.Marca" maxlength="40">
+				<br>
+				<input type="text" class="form-control" placeholder="Modelo" [(ngModel)] = "produto.Modelo" maxlength="40">
+				<br>
+				<input type="text" class="form-control" placeholder="Motor" [(ngModel)] = "produto.Motor" maxlength="40">
+				<br>
+				<input type="text" class="form-control" placeholder="Cor" [(ngModel)] = "produto.Cor" maxlength="40">
+				<br>
+				<input type="text" class="form-control" placeholder="Valor" [(ngModel)] = "produto.Valor" maxlength="40">
+				<br>
+				<button class="btn btn-outline-secondary" type="button" (click)="cadastrar()">Cadastrar</button>
+			</div>
+			<a routerLink="">Voltar</a>
+		</div>
+
+		<div class="col ml-5 " id="tabela">
+			<table class="table">
+				<tr *ngFor="let p of produtos; let i = index">
+					<th scope="row">
+						<div class="row">
+							<div class="col-10">
+								<span>• <u>Marca</u>:  {{p.Marca}}</span><br>
+								<span>• <u>Modelo</u>:  {{p.Modelo}}</span><br>
+								<span>• <u>Motor</u>:  {{p.Motor}}</span><br>
+								<span>• <u>Cor</u>:  {{p.Cor}}</span><br>
+								<span>• <u>Valor</u>:  {{p.Valor}}</span><br>
+							</div>
+							<div class="col-2">	
+								<img src="..\assets\editIcon.png" (click)="editar(i)" style="width: 20px; height: 20px; margin-top: 50px; margin-right: 5px;">
+								<img src="..\assets\deleteIcon.png" (click)="remover(i)" style="width: 20px; height: 20px; margin-top: 50px;">
+							</div>
+						</div>
+					</th>
+				</tr>
+			</table>			
+		</div>
+	</div>
+	
+</div>
+
